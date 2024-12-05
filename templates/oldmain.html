@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYCbnb</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>NYC AirBnB Finder</h1>
+        <img src="images/newyork1.jpg" alt="New York City" class="banner-image">
+    </header>
+
+    <main>
+        <section id="search">
+            <h2>Find Your Perfect Stay</h2>
+            <form onsubmit="toResults(); return false;">
+                <label for="max-rate">Nightly Rate Max:</label>
+                <input type="text" id="max-rate" name="max-rate" placeholder="$500">
+
+                <label for="servicefee-max">Service Fee Max:</label>
+                <input type="text" id="servicefee-max" name="servicefee-max" placeholder="$300">
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="40.7128, -74.0060">
+
+                <label for="rating">Minimum Rating:</label>
+                <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" placeholder="5.0">
+
+                <button type="submit">Search</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made by Ephraim N and Kamuli B</p>
+    </footer>
+	
+    <script>
+        function toResults() {
+            const maxRate = document.getElementById('max-rate').value;
+            const serviceFee = document.getElementById('servicefee-max').value;
+            const location = document.getElementById('location').value;
+            const rating = document.getElementById('rating').value;
+
+            localStorage.setItem('searchCriteria', JSON.stringify({ 
+                maxRate, 
+                serviceFee, 
+                location, 
+                rating 
+            }));
+
+            window.location.href = "continue.html";
+        }
+    </script>
+</body>
+</html>

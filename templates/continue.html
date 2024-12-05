@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - NYCbnb</title>
+    <link rel="stylesheet" href="static/styles/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+    </header>
+
+    <main>
+        <section id="criteria">
+            <h2>Your Search Criteria</h2>
+            <ul>
+                <li>Nightly Rate Max: {{ max_rate }}</li>
+                <li>Service Fee Max: {{ service_fee }}</li>
+                <li>Location: {{ location }}</li>
+                <li>Minimum Rating: {{ rating }}</li>
+            </ul>
+        </section>
+
+        <section id="results">
+            <h2>Top Listings</h2>
+            {% if top_listings %}
+                <ul>
+                    {% for listing in top_listings %}
+                        <li>
+                            <strong>{{ listing['NAME'] }}</strong><br>
+                            Price: ${{ listing['price'] }}<br>
+                            Service Fee: ${{ listing['service fee'] }}<br>
+                            Rating: {{ listing['review rate number'] }}<br>
+                            Coordinates: ({{ listing['lat'] }}, {{ listing['long'] }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No listings found that match your criteria.</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>Made by Ephraim N and Kamuli B</p>
+    </footer>
+</body>
+</html>
